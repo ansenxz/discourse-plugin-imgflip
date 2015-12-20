@@ -5,6 +5,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   selectedMeme: undefined,
   topText: "",
   bottomText: "",
+  Fontxz:"",
   memes: [],
 
   actions: {
@@ -13,10 +14,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
     },
     apply: function() {
       var selectedMeme = this.get("selectedMeme"),
-          topText = this.get("topText"), bottomText = this.get("bottomText"),
+          topText = this.get("topText"), bottomText = this.get("bottomText"),Fontxz = this.get("Fontxz")
           self = this;
       Discourse.ajax(this.getUrl("caption_image") + "&template_id=" + selectedMeme +
-        "&text0=" + topText + "&text1=" + bottomText).then(
+        "&text0=" + topText + "&text1=" + bottomText + "&font=" + Fontxz).then(
           function(resp) {
             if (self.composerViewOld)
               self.composerViewOld.addMarkdown("![](" + resp.data.url + ")");
@@ -34,7 +35,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   onShow: function() {
-    this.setProperties({"loading": true, "memes": [], topText: "", bottomText: "", selectedMeme: undefined });
+    this.setProperties({"loading": true, "memes": [], topText: "", bottomText: "",Fontxz: "", selectedMeme: undefined });
     this.getMemes();
   },
 
