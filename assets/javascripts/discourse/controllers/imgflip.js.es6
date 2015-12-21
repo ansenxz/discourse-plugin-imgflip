@@ -5,7 +5,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   selectedMeme: undefined,
   topText: "",
   bottomText: "",
-  Fontxz:"",
+  Fontxz:"arial",
   memes: [],
 
   actions: {
